@@ -1,0 +1,25 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+   name: k8s-demo-deploy
+spec:
+   replicas: 3
+   selector:
+      matchLabels:
+         app: demo
+   minReadySeconds: 10
+   strategy:
+      type: RollingUpdate
+      rollingUpdate:
+         maxUnavailable: 1
+         maxSurge: 1
+   template:
+      metadata:
+         labels:
+            app: demo
+      spec:
+         containers:
+         - name: demo
+           image: gcr.io/	ghanahighcomindia/demo #You can replace with the name of your image or use mine
+           ports:
+           - containerPort: 8080
