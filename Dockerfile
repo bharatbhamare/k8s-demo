@@ -10,5 +10,5 @@ RUN mvn clean package -DskipTests
 FROM openjdk:8-alpine
 COPY --from=0 /home/app/target/demo.jar /tmp/demo.jar
 
-EXPOSE 80/tcp
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","/tmp/demo.jar"]
