@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
-   name: k8s-demo-deploy
+   name: k8s-demo-deploy-production
 spec:
    replicas: 3
    selector:
@@ -17,6 +17,8 @@ spec:
       metadata:
          labels:
             app: demo
+            env: production
+            role: backend
       spec:
          containers:
          - name: demo
